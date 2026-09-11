@@ -5,4 +5,9 @@ for the project creation it took me much longer due to not having unity installe
 
 
 
+six Conditions
+win get to the end
+loss not completing it(not really a physical one but a mental loss)
+
+
 https://github.com/XtrEEmWasTaken/GameEngineDesign-Implementation-2D
