@@ -8,7 +8,7 @@ public class PlayerControler : MonoBehaviour
     bool isGrounded;
     float horizontalInput;
     float moveSpeed = 8f;
-    float jumpForce = 12f;
+    float jumpForce = 10f;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class PlayerControler : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(Input.GetKeyDown("w") && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
@@ -36,7 +36,20 @@ public class PlayerControler : MonoBehaviour
             if (collision.contacts[i].normal.y > 0.5)
             {
                 isGrounded = true;
-            }
+            }   
+        }
+        
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            respawn();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Manager.Instance.AddCoin();
+            Destroy(collision.gameObject);
         }
     }
      void Jump()
@@ -44,4 +57,10 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
     }
+
+    void respawn()
+    {
+        tr.position = new Vector3(0, -3, 0);
+    }
+
 }
