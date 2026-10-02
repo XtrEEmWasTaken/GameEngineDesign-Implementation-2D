@@ -8,7 +8,7 @@ public class PlayerControler : MonoBehaviour
     bool isGrounded;
     float horizontalInput;
     float moveSpeed = 8f;
-    float jumpForce = 10f;
+    float jumpForce = 8f;
 
     void Start()
     {

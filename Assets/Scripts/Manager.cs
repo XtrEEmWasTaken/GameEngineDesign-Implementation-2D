@@ -1,10 +1,11 @@
 using UnityEngine;
-
+using TMPro;
 public class Manager : MonoBehaviour
 {
     public static Manager Instance;
 
     public int coinCount = 0;
+    public TextMeshProUGUI coinText;
     void Awake()
     {
         if (Instance == null)
@@ -21,6 +22,7 @@ public class Manager : MonoBehaviour
     public void AddCoin()
     {
         coinCount++;
+        coinText.text = "Coins: " + coinCount;
         Debug.Log("Coin Count: " + coinCount);
     }
 }
